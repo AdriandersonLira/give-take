@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background-color: var(--azul-claro);
+    color: #fff;
+    animation: 1.5s init;
+}
+
+@keyframes init {
+    0% {
+        opacity: 0;
+    }   
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Cadastro</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- É aqui que o javascript controlará a digitação de campos obrigatórios -->
+<script language="javascript">
+
+
+
+function alterar(btn, divAlter) {
+    if (btn.value == '0') {
+        divAlter.children[0].insertAdjacentHTML('afterend', returnText());
+        divAlter.removeChild(divAlter.children[2])
+        btn.value = '1'
+    } else {
+        divAlter.children[0].insertAdjacentHTML('afterend', returnSelect());
+        divAlter.removeChild(divAlter.children[2])
+        btn.value = '0'
+    }
+}
+
+function returnText() {
+    return `
+    <input type="text" name="prof" id="prof" placeholder="Digite sua profissão" class="form-control" aria-label="Profissão" aria-describedby="basic-addon1" required>
+    `
+}
+
+function returnSelect() {
+    return `
+    <select id="prof" name="prof" class="form-control custom-select" required>
+        <option value="">Selecione sua profissão</option>
+    </select>
+    `
+}
+
+</script>
+
+
+</head>
+<body>
+<h3 align="center">Cadastro de Colaborador</h3>
+
+<!-- aqui começa o formulario -->
+
+<form method="POST" action="colaborador.php" onSubmit="return valida_dados(this,document.querySelector('#msg'))">
+    <div class="row">
+        <div class="col-md-6">   
+            <div class="input-group mb-3 div-alter"> 
+                
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="material-icons prefix icon">contacts</i></span>
+                </div>
+                <select id="prof" name="prof" class="form-control custom-select" required>
+                    <option value="">Selecione sua profissão</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-success" onclick="alterar(this, document.querySelector('.div-alter'))" value="0" type="button">Outro</button>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="material-icons prefix icon">account_circle</i></span>
+                </div>
+                <input type="email" name="email" id="email" placeholder="E-mail" class="form-control" aria-label="E-mail" aria-describedby="basic-addon1" required>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+</body>
+</html>
